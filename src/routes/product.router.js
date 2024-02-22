@@ -10,7 +10,7 @@ routerProduct.route('/')
 
 routerProduct.route('/:id')
     .get(getOne)
-    .delete(remove)
-    .put(update);
+    .delete(verifyJwt, remove)
+    .put(verifyJwt, update);
 
 module.exports = routerProduct;
