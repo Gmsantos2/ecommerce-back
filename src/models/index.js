@@ -15,4 +15,3 @@ Product.hasMany(Cart)
 
 ProductImg.belongsTo(Product) //ProductImg -> productId
 Product.hasMany(ProductImg)
-
