@@ -1,5 +1,6 @@
 const catchError = require('../utils/catchError');
 const Purchase = require('../models/Purchase');
+const Cart = require('../models/Cart');
 
 const getAll = catchError(async(req, res) => {
     const results = await Purchase.findAll();
@@ -7,8 +8,12 @@ const getAll = catchError(async(req, res) => {
 });
 
 const create = catchError(async(req, res) => {
-    const result = await Purchase.create(req.body);
-    return res.status(201).json(result);
+    const userId = req.user.id
+    const cart = await Cart.findAll({
+        where: { userId },
+        raw: true
+})
+    return res.status(201).json(cart);
 });
 
 
