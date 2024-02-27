@@ -5,7 +5,7 @@ const { verifyJwt } = require('../utils/verifyJWT');
 const routerProductImg = express.Router();
 
 routerProductImg.route('/')
-    .get(verifyJwt, getAll)
+    .get(getAll)
     .post(verifyJwt, create);
 
 routerProductImg.route('/:id')

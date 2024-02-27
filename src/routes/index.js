@@ -13,7 +13,7 @@ router.use('/users', routerUser)
 router.use('/categories', routerCategory)
 router.use('/products', routerProduct)
 router.use('/cart', verifyJwt, routerCart)
-router.use('/productImages', routerProductImg)
+router.use('/product_images', routerProductImg)
 router.use('/purchase', verifyJwt, routerPurchase )
 
 module.exports = router;

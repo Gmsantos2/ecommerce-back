@@ -3,7 +3,7 @@ const sequelize = require('../utils/connection');
 
 const ProductImg = sequelize.define('productImg', {
     url: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false
     },
     filename: {
@@ -12,6 +12,7 @@ const ProductImg = sequelize.define('productImg', {
         unique: true
     }
     //productId
+}, {timestamps: false
 });
 
 module.exports = ProductImg;
