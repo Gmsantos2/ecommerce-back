@@ -3,7 +3,7 @@ const app = require('../app')
 const Category = require('../models/Category')
 require('../models')
 
-
+let TOKEN
 const URL_BASE = '/products'
 const URL_BASE_USERS = '/users'
 let productId
