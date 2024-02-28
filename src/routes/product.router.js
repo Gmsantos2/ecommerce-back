@@ -8,7 +8,7 @@ routerProduct.route('/')
     .get(getAll)
     .post(verifyJwt, create);
 
-routerProductImg.route('/:id/images')
+routerProduct.route('/:id/images')
     .post(setImages)
 
 routerProduct.route('/:id')

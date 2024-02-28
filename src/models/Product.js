@@ -12,7 +12,7 @@ const Product = sequelize.define('product', {
         allowNull: false
     },
     price: {
-        type: DataTypes.DECIMAL(10,2),
+        type: DataTypes.DECIMAL,
         allowNull: false
     }
     //categoryId
