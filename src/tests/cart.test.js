@@ -9,6 +9,7 @@ let bodyCart
 let bodyProduct
 let product
 let userId
+let cartId
 beforeAll(async () => {
   const user = {
     email: 'fernando@gmail',
@@ -35,9 +36,26 @@ test("POST -> 'URL_BASE', should return status code 201, res.body to be de defin
     .post(URL_BASE)
     .send(bodyCart)
     .set('Authorization', `Bearer ${TOKEN}`)
+
+    cartId = res.body.id
   expect(res.status).toBe(201)
   expect(res.body).toBeDefined()
   expect(res.body.quantity).toBe(bodyCart.quantity)
   expect(res.body.userId).toBe(userId)
-  await product.destroy()
+  
 })
+
+test("GET -> 'URL_BASE/:id', should status 200, res.body to be defined and res.body.quantity === bodyCart.quantity", async () => {
+    const res = await request(app)
+      .get(`${URL_BASE}/${cartId}`)
+      .set('Authorization', `Bearer ${TOKEN}`)
+    expect(res.status).toBe(200)
+    expect(res.body).toBeDefined()
+    expect(res.body.quantity).toBe(bodyCart.quantity)
+    expect(res.body.userId).toBeDefined()
+    expect(res.body.userId).toBe(userId)
+    expect(res.body.productId).toBeDefined()
+    expect(res.body.productId).toBe(product.id)
+  
+    await product.destroy()
+  })
