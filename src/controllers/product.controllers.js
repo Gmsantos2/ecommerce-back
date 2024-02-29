@@ -4,9 +4,9 @@ const Category = require('../models/Category');
 const ProductImg = require('../models/ProductImg');
 
 const getAll = catchError(async(req, res) => {
-    const {category} = req.query;
+    const {categoryId} = req.query;
     const where = {}
-    if(category) where.categoryId = category
+    if(categoryId) where.categoryId = categoryId
 
     const results = await Product.findAll({
         include: [Category, ProductImg], 
